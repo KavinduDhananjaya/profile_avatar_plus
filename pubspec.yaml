@@ -1,6 +1,6 @@
 name: profile_avatar
 description: "A simple flutter package for show user profile picture"
-version: 0.0.1
+version: 1.0.0
 homepage:
 
 environment:
