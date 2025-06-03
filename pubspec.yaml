@@ -1,6 +1,6 @@
 name: profile_avatar_plus
 description: "A simple flutter package for show user profile picture"
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/KavinduDhananjaya/profile_avatar_plus.git
 
 environment:
