@@ -55,6 +55,9 @@ ProfileAvatar(
 
 3. Profile Avatar with Image and Edit Option
 
+`The onChangeProfilePicture is a callback function provided to the ProfileAvatar widget. It is triggered when the user taps on the edit overlay of the avatar.
+ The callback is used to handle actions when the edit overlay is tapped, such as opening an image picker or updating the profile picture.
+`
 ```
 ProfileAvatar(
   firstName: "John",
