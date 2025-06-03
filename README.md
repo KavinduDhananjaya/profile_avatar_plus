@@ -1,4 +1,4 @@
-# Profile Avatar
+# Profile Avatar Plus
 
 profile_avatar_plus is a lightweight, customizable Flutter package that provides an elegant solution for displaying user avatars in your applications.
 
