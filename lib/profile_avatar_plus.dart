@@ -49,7 +49,6 @@ class ProfileAvatar extends StatelessWidget {
     this.editIcon, // Custom edit icon
   });
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -79,11 +78,12 @@ class ProfileAvatar extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Center(
-                child: editIcon ?? Icon(
-                  Icons.camera_alt,
-                  color: Colors.white,
-                  size: radius / 2,
-                ),
+                child: editIcon ??
+                    Icon(
+                      Icons.camera_alt,
+                      color: Colors.white,
+                      size: radius / 2,
+                    ),
               ),
             ),
         ],
