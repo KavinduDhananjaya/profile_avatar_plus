@@ -46,21 +46,26 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              /// Basic Profile Avatar with Initials
               ProfileAvatar(
                 firstName: "John",
                 lastName: "Doe",
                 radius: 100,
               ),
               SizedBox(height: 24),
+
+              /// Profile Avatar with Image and No Edit Option
               ProfileAvatar(
                 firstName: "John",
                 lastName: "Doe",
                 radius: 100,
                 profileImageUrl:
-                "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
+                    "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
                 isEditEnabled: false,
               ),
               SizedBox(height: 24),
+
+              /// Profile Avatar with Image and Edit Option
               ProfileAvatar(
                 firstName: "John",
                 lastName: "Doe",
@@ -71,6 +76,37 @@ class _MyHomePageState extends State<MyHomePage> {
                   log("Profile picture changed");
                 },
                 isEditEnabled: true,
+              ),
+              SizedBox(height: 24),
+
+              /// Profile Avatar with Custom Border
+              ProfileAvatar(
+                firstName: "John",
+                lastName: "Doe",
+                radius: 100,
+                profileImageUrl:
+                    "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
+                borderWidth: 2,
+                borderColor: Colors.red,
+              ),
+              SizedBox(height: 24),
+
+              /// Profile Avatar with Custom Edit Icon
+              ProfileAvatar(
+                firstName: "John",
+                lastName: "Doe",
+                radius: 100,
+                profileImageUrl:
+                    "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
+                onChangeProfilePicture: () {
+                  log("Profile picture changed");
+                },
+                isEditEnabled: true,
+                editIcon: Icon(
+                  Icons.edit,
+                  color: Colors.blue,
+                  size: 40,
+                ),
               ),
             ],
           ),
