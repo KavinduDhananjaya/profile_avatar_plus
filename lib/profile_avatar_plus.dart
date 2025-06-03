@@ -6,6 +6,8 @@ class ProfileAvatar extends StatelessWidget {
   final String lastName;
   final double radius;
   final String? profileImageUrl;
+  final VoidCallback? onChangeProfilePicture;
+  final bool isEditEnabled;
 
   const ProfileAvatar({
     super.key,
@@ -13,25 +15,50 @@ class ProfileAvatar extends StatelessWidget {
     required this.lastName,
     this.radius = 26,
     this.profileImageUrl,
+    this.onChangeProfilePicture,
+    this.isEditEnabled = false, // Default to false if not provided
   });
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: radius,
-      backgroundColor: Colors.lightBlueAccent,
-      child: _buildAvatarContent(),
+    return GestureDetector(
+      onTap: isEditEnabled ? onChangeProfilePicture : null,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CircleAvatar(
+            radius: radius,
+            backgroundColor: Colors.lightBlueAccent,
+            child: _buildAvatarContent(),
+          ),
+          if (isEditEnabled && onChangeProfilePicture != null)
+            Container(
+              width: radius * 2,
+              height: radius * 2,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.3),
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.white,
+                  size: radius / 2,
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
-
 
   Widget _buildAvatarContent() {
     if (profileImageUrl != null && profileImageUrl!.isNotEmpty) {
       return ClipOval(
         child: CachedNetworkImage(
           imageUrl: profileImageUrl!,
-          width: radius * 1.98,
-          height: radius * 1.98,
+          width: radius * 2,
+          height: radius * 2,
           fit: BoxFit.cover,
           placeholder: (context, url) => CircularProgressIndicator(),
           errorWidget: (context, url, error) => _buildInitials(),
@@ -54,8 +81,6 @@ class ProfileAvatar extends StatelessWidget {
       ),
     );
   }
-
-
 
   String _getInitials(String firstName, String lastName) {
     if (firstName.isNotEmpty && lastName.isNotEmpty) {

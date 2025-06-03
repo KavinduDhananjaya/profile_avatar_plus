@@ -1,6 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:profile_avatar_plus/profile_avatar_plus.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -24,14 +25,15 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key,});
+  const MyHomePage({
+    super.key,
+  });
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +49,30 @@ class _MyHomePageState extends State<MyHomePage> {
               firstName: "John",
               lastName: "Doe",
               radius: 100,
+            ),
+            SizedBox(height: 24),
+            ProfileAvatar(
+              firstName: "John",
+              lastName: "Doe",
+              radius: 100,
+              profileImageUrl:
+              "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
+              onChangeProfilePicture: () {
+                log("Profile picture changed");
+              },
+              isEditEnabled: false,
+            ),
+            SizedBox(height: 24),
+            ProfileAvatar(
+              firstName: "John",
+              lastName: "Doe",
+              radius: 100,
+              profileImageUrl:
+                  "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
+              onChangeProfilePicture: () {
+                log("Profile picture changed");
+              },
+              isEditEnabled: true,
             ),
           ],
         ),
