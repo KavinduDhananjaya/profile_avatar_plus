@@ -42,39 +42,38 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Profile Avatar"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ProfileAvatar(
-              firstName: "John",
-              lastName: "Doe",
-              radius: 100,
-            ),
-            SizedBox(height: 24),
-            ProfileAvatar(
-              firstName: "John",
-              lastName: "Doe",
-              radius: 100,
-              profileImageUrl:
-              "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
-              onChangeProfilePicture: () {
-                log("Profile picture changed");
-              },
-              isEditEnabled: false,
-            ),
-            SizedBox(height: 24),
-            ProfileAvatar(
-              firstName: "John",
-              lastName: "Doe",
-              radius: 100,
-              profileImageUrl:
-                  "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
-              onChangeProfilePicture: () {
-                log("Profile picture changed");
-              },
-              isEditEnabled: true,
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ProfileAvatar(
+                firstName: "John",
+                lastName: "Doe",
+                radius: 100,
+              ),
+              SizedBox(height: 24),
+              ProfileAvatar(
+                firstName: "John",
+                lastName: "Doe",
+                radius: 100,
+                profileImageUrl:
+                "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
+                isEditEnabled: false,
+              ),
+              SizedBox(height: 24),
+              ProfileAvatar(
+                firstName: "John",
+                lastName: "Doe",
+                radius: 100,
+                profileImageUrl:
+                    "https://i.postimg.cc/wBK7N78c/photo-1535713875002-d1d0cf377fde.jpg",
+                onChangeProfilePicture: () {
+                  log("Profile picture changed");
+                },
+                isEditEnabled: true,
+              ),
+            ],
+          ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

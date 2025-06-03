@@ -8,6 +8,9 @@ class ProfileAvatar extends StatelessWidget {
   final String? profileImageUrl;
   final VoidCallback? onChangeProfilePicture;
   final bool isEditEnabled;
+  final double borderWidth;
+  final Color borderColor;
+  final Widget? editIcon;
 
   const ProfileAvatar({
     super.key,
@@ -17,6 +20,9 @@ class ProfileAvatar extends StatelessWidget {
     this.profileImageUrl,
     this.onChangeProfilePicture,
     this.isEditEnabled = false, // Default to false if not provided
+    this.borderWidth = 2.0, // Default border width
+    this.borderColor = Colors.transparent, // Default border color
+    this.editIcon, // Custom edit icon
   });
 
   @override
@@ -26,10 +32,18 @@ class ProfileAvatar extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          CircleAvatar(
-            radius: radius,
-            backgroundColor: Colors.lightBlueAccent,
-            child: _buildAvatarContent(),
+          Container(
+            width: radius * 2 + borderWidth * 2,
+            height: radius * 2 + borderWidth * 2,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: borderColor, width: borderWidth),
+            ),
+            child: CircleAvatar(
+              radius: radius,
+              backgroundColor: Colors.lightBlueAccent,
+              child: _buildAvatarContent(),
+            ),
           ),
           if (isEditEnabled && onChangeProfilePicture != null)
             Container(
@@ -40,7 +54,7 @@ class ProfileAvatar extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Center(
-                child: Icon(
+                child: editIcon ?? Icon(
                   Icons.camera_alt,
                   color: Colors.white,
                   size: radius / 2,
