@@ -2,16 +2,40 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ProfileAvatar extends StatelessWidget {
+  /// The first name of the user. Used to generate initials if no image is provided.
   final String firstName;
+
+  /// The last name of the user. Used to generate initials if no image is provided.
   final String lastName;
+
+  /// The radius of the avatar. Determines the size of the avatar.
   final double radius;
+
+  /// The URL of the profile image. If provided, the image is displayed instead of initials.
   final String? profileImageUrl;
+
+  /// Callback function triggered when the edit overlay is tapped.
+  /// Only works if [isEditEnabled] is true.
   final VoidCallback? onChangeProfilePicture;
+
+  /// Determines whether the edit overlay is displayed.
+  /// If true, the overlay with the edit icon is shown.
   final bool isEditEnabled;
+
+  /// The width of the border around the avatar.
   final double borderWidth;
+
+  /// The color of the border around the avatar.
   final Color borderColor;
+
+  /// Custom widget for the edit icon displayed in the overlay.
+  /// If not provided, a default camera icon is used.
   final Widget? editIcon;
 
+  /// Creates a [ProfileAvatar] widget.
+  ///
+  /// The [firstName] and [lastName] are required to generate initials if no image is provided.
+  /// The [radius] defaults to 26, [borderWidth] defaults to 2.0, and [borderColor] defaults to transparent.
   const ProfileAvatar({
     super.key,
     required this.firstName,
@@ -24,6 +48,7 @@ class ProfileAvatar extends StatelessWidget {
     this.borderColor = Colors.transparent, // Default border color
     this.editIcon, // Custom edit icon
   });
+
 
   @override
   Widget build(BuildContext context) {
